@@ -1,0 +1,116 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<time.h>
+// the random function
+int RandomNumberGenerator(const int nMin, const int nMax, const int  nNumOfNumsToGenerate)
+{
+  int i,nRandonNumber = 0;
+  for (i = 0; i < nNumOfNumsToGenerate; i++)
+  {
+    nRandonNumber = rand()%(nMax-nMin) + nMin;
+  }
+  return nRandonNumber;
+}
+void main()
+{
+	int w[2],d[2],k=1,t=1,v=0;
+	char e;
+	clrscr();
+	printf("Hello brave warrior , you have caught yourself in this dungeon and you must slay this dragon to free yourself and escape \n");
+	printf("The Battle Begins!!!!\n");
+	w[0] = 100;
+	w[1] = 5;
+	d[0] = 456;
+	d[1] = 3;
+	printf("Instructions :\n Enter 'a' to Attack ,'b' to apply buff , 'c' to cure , 'd' to apply debuff \n *Buffs last for 2 rounds* *Debufs last for 2 rounds* \n" );
+
+	while(d[0]>0)
+	{
+		if(w[0]>0)
+		{
+		printf("Battle stats : \n You \t Dragon \n Health : %d \t Health : %d \n Attack : %d \t Attack : %d \n",w[0],d[0],(k*w[1]),d[1]);
+		printf("Your Turn :  \n");
+		scanf(" %c",&e);
+		switch(e)
+		{
+			case 'a' : /* Attack */
+			d[0] = d[0] - (k*w[1]);
+			break;
+
+			case 'b' : /* Buff */
+			if(k<=5)
+			{
+			//v=0;
+			k = 2 + k;
+			printf("Buff applied \n");
+
+			}
+	        else
+			{
+				printf("Max Stacks\n");
+			}
+			break;
+
+			case 'c' : /* CURE */
+			if(w[0] < 100)
+			{
+			w[0] = 10 + w[0];
+			printf("Healed\n");
+			}
+			else
+			{
+				printf("You have MAX HEALTH \n");
+			}
+		    break;
+
+			case 'd' : /* Debuff */
+			if(d[1] > 0 )
+			{
+				printf("Debuff applied \n");
+			    d[1] = d[1] - 1;
+			}
+			else
+			{
+				printf("Max stacks \n");
+			}
+			break;
+			
+			case 'e' :
+			exit(0);
+			
+
+			default:
+			printf("Invalid Input\n");
+			break;
+
+		}
+		/*v++;
+		if(v == 1)                          //Hello noob coder , figure this code out on resetting buff and debuff 
+		{
+			w[1] = 5;
+			v=0;
+		}*/
+		if(w[0]>0)
+		{
+			printf("Dragons Hits \n");
+			srand(time(NULL));
+            d[1] = RandomNumberGenerator(2,7,1);
+			w[0] = w[0] - d[1];
+		}
+		t++;
+		}
+		else
+		{
+			printf("Game Over\n");
+			exit(0);
+		}
+	}
+	printf("Excellent , You have slayed the DRAGON \n");
+	printf("Turns Taken : '%d' \n" ,t);
+	getch();
+}
+
+
+
+
