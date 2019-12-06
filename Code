@@ -86,7 +86,7 @@ void main()
 
 		}
 		/*v++;
-		if(v == 1)                          //Hello noob coder , figure this code out on resetting buff and debuff 
+		if(v == 1)                          //Hello brave coder , figure this code out on resetting buff and debuff 
 		{
 			w[1] = 5;
 			v=0;
